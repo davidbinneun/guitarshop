@@ -8,8 +8,10 @@ class ClassicGuitar {
     }
 
     play(){
-        this.price = this.price * 0.90;
-        this.used = true;
+        if (!this.used){
+            this.price = this.price * 0.90;
+            this.used = true;
+        }
         return "🎶🎶🎶";
     }
 
@@ -50,22 +52,11 @@ class ElectricGuitar extends ClassicGuitar {
     }
 
     play(){
-        this.price = this.price * 0.90;
-        this.used = true;
+        if (!this.used){
+            this.price = this.price * 0.90;
+            this.used = true;
+        }
         return "🎸🎸🎸";
-    }
-
-    static detectSound(sound){
-        switch(sound) {
-            case '🎶':
-                return 'ClassicGuitar';
-            case '🎸':
-                return 'ElectricGuitar';
-            case '🔊':
-                return 'BassGuitar';
-            default:
-                return 'dafuqIsThat';
-            }  
     }
 }
 
@@ -92,18 +83,5 @@ class BassGuitar extends ClassicGuitar {
             solo += characters.charAt(Math.floor(Math.random() * 6));
         }
         return solo;
-    }
-
-    static detectSound(sound){
-        switch(sound) {
-            case '🎶':
-                return 'ClassicGuitar';
-            case '🎸':
-                return 'ElectricGuitar';
-            case '🔊':
-                return 'BassGuitar';
-            default:
-                return 'dafuqIsThat';
-            }  
     }
 }
